@@ -58,12 +58,13 @@ dependencies {
     implementation Libs.AndroidX.Activity.activityCompose
 
     implementation Libs.Kotlin.stdlib
-    implementation Libs.Kotlin.extensions
     implementation Libs.Kotlin.Coroutines.android
 
     implementation Libs.AndroidX.Room.runtime
     implementation Libs.AndroidX.Room.coroutine
     kapt Libs.AndroidX.Room.kapt
+
+    implementation Libs.AndroidX.Navigation.compose
 
     implementation Libs.AndroidX.Compose.runtime
     implementation Libs.AndroidX.Compose.foundation
@@ -71,6 +72,7 @@ dependencies {
     implementation Libs.AndroidX.Compose.layout
     implementation Libs.AndroidX.Compose.animation
     implementation Libs.AndroidX.Compose.tooling
+    implementation Libs.AndroidX.Compose.icon
     implementation Libs.AndroidX.Lifecycle.viewModelCompose
     implementation Libs.AndroidX.Lifecycle.viewModelKtx
     implementation Libs.Hilt.android

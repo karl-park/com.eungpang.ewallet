@@ -15,7 +15,7 @@ object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:7.0.3"
 
     object Kotlin {
-        private const val version = "1.6.0"
+        private const val version = "1.5.31"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
@@ -32,7 +32,7 @@ object Libs {
             const val activityCompose = "androidx.activity:activity-compose:1.4.0"
         }
 
-        const val coreKtx = "'androidx.core:core-ktx:1.7.0"
+        const val coreKtx = "androidx.core:core-ktx:1.7.0"
         const val appcompat = "androidx.appcompat:appcompat:1.4.0"
 
         object Compose {
@@ -44,6 +44,7 @@ object Libs {
             const val layout = "androidx.compose.foundation:foundation-layout:$version"
             const val tooling = "androidx.compose.ui:ui-tooling:$version"
             const val animation = "androidx.compose.animation:animation:$version"
+            const val icon = "androidx.compose.material:material-icons-extended:$version"
             const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
             const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:$version"
         }
@@ -53,6 +54,11 @@ object Libs {
             const val runtime = "androidx.room:room-runtime:$version"
             const val kapt = "androidx.room:room-compiler:$version"
             const val coroutine = "androidx.room:room-ktx:$version"
+        }
+
+        object Navigation {
+            private const val version = "2.4.0-beta02"
+            const val compose = "androidx.navigation:navigation-compose:$version"
         }
 
         object Lifecycle {
