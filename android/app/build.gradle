@@ -75,6 +75,10 @@ dependencies {
     implementation Libs.AndroidX.Compose.icon
     implementation Libs.AndroidX.Lifecycle.viewModelCompose
     implementation Libs.AndroidX.Lifecycle.viewModelKtx
+
+    implementation Libs.AndroidX.DataStore.typed // TODO: proto buffer
+    implementation Libs.AndroidX.DataStore.preferences
+
     implementation Libs.Hilt.android
     kapt Libs.Hilt.compiler
 
@@ -96,4 +100,6 @@ dependencies {
     androidTestImplementation Libs.Hilt.testing
     kaptAndroidTest Libs.Hilt.compiler
     testImplementation Libs.Kotlin.Coroutines.test
+
+    implementation Libs.Google.Accompanist.swipeRefresh
 }

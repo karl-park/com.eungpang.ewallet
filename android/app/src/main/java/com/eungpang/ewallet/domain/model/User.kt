@@ -1,7 +1,7 @@
-package com.eungpang.ewallet.domain.model
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               package com.eungpang.ewallet.domain.model
 
+import androidx.compose.runtime.Immutable
 import java.util.*
-import javax.annotation.concurrent.Immutable
 
 @Immutable
 data class User(

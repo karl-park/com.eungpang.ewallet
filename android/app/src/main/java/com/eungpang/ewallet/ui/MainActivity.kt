@@ -3,20 +3,25 @@ package com.eungpang.ewallet.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -27,18 +32,24 @@ import com.eungpang.ewallet.ui.account.Account
 import com.eungpang.ewallet.ui.home.Home
 import com.eungpang.ewallet.ui.qrcode.QrCode
 import com.eungpang.ewallet.ui.theme.KWalletTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalCoilApi
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val viewModel by viewModels<MainViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            KWalletApp()
+            KWalletApp(viewModel)
         }
     }
 }
 
+@ExperimentalCoilApi
 @Composable
-fun KWalletApp() {
+fun KWalletApp(viewModel: MainViewModel = viewModel()) {
     val allScreens = KWalletScreen.values().toList()
     val navController = rememberNavController()
     val backstackEntry = navController.currentBackStackEntryAsState()
@@ -59,6 +70,7 @@ fun KWalletApp() {
             }
         ) {
             KWalletNavHost(
+                viewModel = viewModel,
                 navController = navController,
             )
         }
@@ -67,13 +79,14 @@ fun KWalletApp() {
 
 @Composable
 fun KWalletBottomTabRow(
+    modifier: Modifier = Modifier,
     screens: List<KWalletScreen>,
     onTabSelected: (KWalletScreen) -> Unit,
     currentScreen: KWalletScreen,
-    modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
+            .background(Color.White)
             .selectableGroup()
     ) {
         screens.forEach { screen ->
@@ -128,19 +141,21 @@ fun RowScope.KWalletBottomTabItem(
 @ExperimentalCoilApi
 @Composable
 fun KWalletNavHost(
+    modifier: Modifier = Modifier,
+    viewModel: MainViewModel = viewModel(),
     navController: NavHostController,
-    modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = navController,
         startDestination = KWalletScreen.Home.path,
         modifier = modifier
             .fillMaxWidth()
+            .padding(bottom = 50.dp)
     ) {
         composable(
             KWalletScreen.Home.path
         ) {
-            Home()
+            Home(viewModel)
         }
 
         composable(
@@ -157,6 +172,7 @@ fun KWalletNavHost(
     }
 }
 
+@ExperimentalCoilApi
 @Preview(name = "KWalletApp")
 @Composable
 fun KWalletAppPreview() {

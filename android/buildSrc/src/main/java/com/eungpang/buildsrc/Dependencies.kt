@@ -35,6 +35,12 @@ object Libs {
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
         const val appcompat = "androidx.appcompat:appcompat:1.4.0"
 
+        object DataStore {
+            const val version = "1.0.0"
+            const val typed = "androidx.datastore:datastore:$version"
+            const val preferences = "androidx.datastore:datastore-preferences:$version"
+        }
+
         object Compose {
             const val version = "1.0.5"
 
@@ -77,6 +83,13 @@ object Libs {
                 const val junit = "androidx.test.ext:junit-ktx:$version"
             }
             const val espressoCore = "androidx.test.espresso:espresso-core:3.2.0"
+        }
+    }
+
+    object Google {
+        object Accompanist {
+            private const val version = "0.20.2"
+            const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:$version"
         }
     }
 
